@@ -13,5 +13,5 @@ public interface ShoeService {
 	public void deleteShoeById(int id);
 	public List<Shoe> getAllShoes();
 	public List<Shoe> getAllShoesByShoeName(String name);
-	public List<Shoe> getAllShoesByCategory(String name);
+	//public List<Shoe> getAllShoesByCategory(String name);
 }

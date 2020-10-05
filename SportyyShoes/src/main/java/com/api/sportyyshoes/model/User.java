@@ -32,6 +32,8 @@ public class User {
 	private int id;
 	private String name;
 	private String date;
+	private String category;
+	
 	@OneToMany(targetEntity = Shoe.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="cusProForeignKey",referencedColumnName = "id")
 	List<Shoe> shoes;

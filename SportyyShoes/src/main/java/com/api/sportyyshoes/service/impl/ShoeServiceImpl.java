@@ -60,11 +60,11 @@ public class ShoeServiceImpl implements ShoeService{
 		return repository.findByShoeName(name);
 	}
 
-	@Override
+	/*@Override
 	public List<Shoe> getAllShoesByCategory(String name) {
 		// TODO Auto-generated method stub
 		return repository.findByCategory(name);
-	}
+	}*/
 
 
 

@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import com.api.sportyyshoes.exceptionHandler.BusinessException;
+import com.api.sportyyshoes.model.Shoe;
 import com.api.sportyyshoes.model.User;
 import com.api.sportyyshoes.service.UserService;
 
@@ -40,20 +43,17 @@ public class UserController {
 	}
 
 	@GetMapping("/user/{id}")
-	public ResponseEntity<User> getUserById(@PathVariable int id) {
+	public User getUserById(@PathVariable int id) {
 		
-		try {
-			return new ResponseEntity<>(service.getUserById(id),HttpStatus.OK);
-		} catch (BusinessException e) {
-			errorMap=new LinkedMultiValueMap<>();
-			errorMap.add("errorMessage", e.getMessage());
-			return new ResponseEntity<>(null,errorMap,HttpStatus.NOT_FOUND);
-		}
+	
+		return service.getUserById(id);
+		
 	}
 
 	@DeleteMapping("/deleteUser/{id}")
 	public void deleteUserById(@PathVariable int id) {
 		service.deleteUserById(id);
+		
 		
 	}
 	
@@ -74,6 +74,12 @@ public class UserController {
 	public List<User> purchaseReportByDate(@PathVariable String date) {
 		
 		return service.purchaseReportByDate(date);
+	}
+	
+	@GetMapping("/reportByCategory/{category}")
+	public List<User> purchaseReportByCategory(@PathVariable String category) {
+		
+		return service.purchaseReportByCategory(category);
 	}
 
 	

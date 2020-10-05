@@ -9,9 +9,10 @@ public interface UserService {
 
 	public User createUser(User user);
 	public User updateUser(User user);
-	public User getUserById(int id) throws BusinessException;
+	public User getUserById(int id) ;
 	public void deleteUserById(int id);
 	public List<User> getAllUsers();
 	public List<User> getAllUsersByName(String name);
 	public List<User> purchaseReportByDate(String date);
+	public List<User> purchaseReportByCategory(String category);
 }

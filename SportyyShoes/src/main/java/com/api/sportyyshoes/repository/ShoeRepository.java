@@ -11,6 +11,6 @@ import com.api.sportyyshoes.model.Shoe;
 public interface ShoeRepository extends JpaRepository<Shoe, Integer> {
 	
 	public List<Shoe> findByShoeName(String name);
-	public List<Shoe> findByCategory(String name);
+	//public List<Shoe> findByCategory(String name);
 
 }

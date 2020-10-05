@@ -26,7 +26,6 @@ public class Shoe {
 	//@GeneratedValue
 	private int id;
 	private String shoeName;
-	private String category;
 
 }
 	

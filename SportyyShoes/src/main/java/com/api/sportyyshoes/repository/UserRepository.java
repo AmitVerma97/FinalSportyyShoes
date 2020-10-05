@@ -14,6 +14,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	public List<User> findByName(String name);
 	public List<User> findByDate(String date);
+	public List<User> findByCategory(String category);
 	
 	// @Query("SELECT new com.api.sportyshoes.model.Customer(c.name , c.date , c.) FROM Customer c JOIN c.products p")
     //public List<Customer> purchaseReport();

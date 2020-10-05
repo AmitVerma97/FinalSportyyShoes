@@ -73,11 +73,11 @@ public class ShoeController {
 		return service.getAllShoesByShoeName(name);
 	}
 	
-	@GetMapping("/shoeCategory/{name}")
+	/*@GetMapping("/shoeCategory/{name}")
 	public List<Shoe> getAllShoesByCategory(@PathVariable String name) {
 		
 		return service.getAllShoesByCategory(name);
-	}
+	}*/
 
 	
 }
