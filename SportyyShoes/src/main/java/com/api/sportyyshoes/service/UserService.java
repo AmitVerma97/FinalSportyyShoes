@@ -7,12 +7,12 @@ import com.api.sportyyshoes.model.User;
 
 public interface UserService {
 
-	public User createUser(User user);
-	public User updateUser(User user);
-	public User getUserById(int id) ;
-	public void deleteUserById(int id);
+	public User createUser(User user) throws BusinessException;
+	public User updateUser(User user) ;
+	public User getUserById(int id) throws BusinessException ;
+	public void deleteUserById(int id) throws BusinessException;
 	public List<User> getAllUsers();
-	public List<User> getAllUsersByName(String name);
+	public List<User> getAllUsersByName(String name) ;
 	public List<User> purchaseReportByDate(String date);
 	public List<User> purchaseReportByCategory(String category);
 }

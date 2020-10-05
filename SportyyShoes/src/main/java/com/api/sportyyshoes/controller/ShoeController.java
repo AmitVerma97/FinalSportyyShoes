@@ -31,9 +31,14 @@ public class ShoeController {
 	
 	
 	@PostMapping("/shoe")
-	public Shoe createShoe(@RequestBody Shoe shoe) {
-		
-		return service.createShoe(shoe);
+	public ResponseEntity<Shoe> createShoe(@RequestBody Shoe shoe) {
+		try {
+		return new ResponseEntity<>(service.createShoe(shoe), HttpStatus.OK);
+		}catch (BusinessException e) {
+			errorMap = new LinkedMultiValueMap<>();
+			errorMap.add("errorMessage:", e.getMessage());
+			return new ResponseEntity<>(null, errorMap, HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	@PutMapping("/shoe")
@@ -55,8 +60,15 @@ public class ShoeController {
 	}
 
 	@DeleteMapping("/deleteShoe/{id}")
-	public void deleteShoeById(@PathVariable int id) {
+	public ResponseEntity<String> deleteShoeById(@PathVariable int id) {
+		try {
 		service.deleteShoeById(id);
+		return new ResponseEntity<>("shoe deleted with id " + id, HttpStatus.OK);
+		}catch (BusinessException e) {
+			errorMap = new LinkedMultiValueMap<>();
+			errorMap.add("errorMessage:", e.getMessage());
+			return new ResponseEntity<>(e.getMessage(), errorMap, HttpStatus.BAD_REQUEST);
+		}
 		
 	}
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.api.sportyyshoes.exceptionHandler.BusinessException;
@@ -32,17 +33,27 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User getUserById(int id) {
-		
+	public User getUserById(int id)throws BusinessException  {
+		User user=null;
 			
-			
-		return repository.findById(id).get();
-	
+		try {
+			if(id<=0) throw new BusinessException("User Id can not be negative or zero");	
+			user=repository.findById(id).get();
+		}catch(NoSuchElementException e) {
+			throw new BusinessException("No User found with Id: "+id);
+		}
+		return user;
 	}
 
 	@Override
-	public void deleteUserById(int id) {
+	public void deleteUserById(int id) throws BusinessException {
+		try {
 		repository.deleteById(id);
+		}catch(IllegalArgumentException e) {
+			throw new BusinessException("Invalid id: "+id);
+		}catch(EmptyResultDataAccessException e) {
+			throw new BusinessException("No User exist with id: "+id);
+		}
 	}
 
 	@Override
